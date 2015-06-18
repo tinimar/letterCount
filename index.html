@@ -1,7 +1,7 @@
 <!doctype <!DOCTYPE html>
 <html>
 <body>
-	<textarea id= 'textarea' rows="4" cols ="50"  onfocus="this.value='';">
+	<textarea id="input" rows="4" cols ="50"  onfocus="this.value='';">
 		Write something! Then hit submit to count the letters and words of what you've written.
 	</textarea>
 	<br><br>
@@ -9,13 +9,28 @@
 	<p id='result'></p>
 
 	<script>
-	var input = document.getElementById('textarea').value;
+	var input = document.getElementById('input');
 	var result = document.getElementById( 'result' );
-	var userInput = input.length;
+
 
 	function count(){
-		result.innerHTML = userInput;
+		var str = input.value;
+		var words = str.split(' ');
+		var word;
+		var wordcount = 0;
+		var lettercount = 0;
+
+		for (var i = 0; i < words.length; i++){
+    		word = words[i]
+    		if (word) {
+    			wordcount++;
+    			lettercount += word.length;
+    		}
+		}
+
+		result.innerHTML = lettercount + ' letters, ' + wordcount + ' words';
 	}
+
 	</script>
 	
 </body>
